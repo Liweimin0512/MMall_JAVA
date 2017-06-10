@@ -6,7 +6,8 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import java.io.Serializable;
 
 
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)//保证序列化json的时候，如果是null的对象，Key也会消失
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//保证序列化json的时候，如果是null的对象，Key也会消失
 public class ServerResponse<T> implements Serializable {
     private int status;
     private String msg;
@@ -63,7 +64,7 @@ public class ServerResponse<T> implements Serializable {
         return new ServerResponse<T>(ResponseCode.ERROR.getCode(),errorMessage);
     }
 
-    public static <T> ServerResponse<T> creatByErrorCodeMessage(,int errorCode,String errorMessage){
+    public static <T> ServerResponse<T> creatByErrorCodeMessage(int errorCode,String errorMessage){
         return new ServerResponse<T>(errorCode,errorMessage);
     }
 
