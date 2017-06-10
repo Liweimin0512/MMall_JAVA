@@ -2,6 +2,7 @@ package com.mmall.service.impl;
 
 import com.mmall.common.Const;
 import com.mmall.common.ServerResponse;
+import com.mmall.common.TokenCache;
 import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
 import com.mmall.service.IUserService;
@@ -10,6 +11,8 @@ import com.sun.corba.se.spi.activation.Server;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 /**
  * Created by 24102 on 2017/6/10.
@@ -76,5 +79,28 @@ public class UserServiceImpl implements IUserService{
             return ServerResponse.creatByErrorMessage("参数错误");
         }
         return ServerResponse.creatBySuccessMessage("校验成功");
+    }
+
+    public ServerResponse selectQuestion(String username){
+        ServerResponse validResponse = this.checkValid(username,Const.USERNAME);
+        if (validResponse.isSuccess()){
+            return ServerResponse.creatByError().creatByErrorMessage("用户不存在");
+        }
+        String question = userMapper.selectQuestionByUsername(username);
+        if (StringUtils.isNoneBlank(question)){
+            return ServerResponse.creatByError().creatBySuccess(question);
+        }
+        return ServerResponse.creatByErrorMessage("找回密码的问题是空的");
+    }
+
+    public ServerResponse<String> checkAnswer(String username,String question,String answer){
+        int resultCount = userMapper.checkAnswer(username,question,answer);
+        if (resultCount>0){
+            //说明问题及问题答案是这个用户的，并且是正确的
+            String forgetToken = UUID.randomUUID().toString();
+            TokenCache.setKey("token_"+username,forgetToken);
+            return ServerResponse.creatBySuccess(forgetToken);
+        }
+        return ServerResponse.creatByErrorMessage("问题的答案错误");
     }
 }
