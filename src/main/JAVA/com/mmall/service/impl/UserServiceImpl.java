@@ -19,8 +19,10 @@ import java.util.UUID;
  */
 @Service("iUserService")
 public class UserServiceImpl implements IUserService{
+
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public ServerResponse<User> login(String username, String password){
         int resultCount = userMapper.checkUsername(username);
@@ -72,7 +74,7 @@ public class UserServiceImpl implements IUserService{
             if (Const.EMAIL.equals(type)){
                 int resultCount = userMapper.checkEmail(str);
                 if (resultCount > 0){
-                    return ServerResponse.creatByErrorMessage("emaill已存在");
+                    return ServerResponse.creatByErrorMessage("email已存在");
                 }
             }
         }else{
@@ -166,4 +168,14 @@ public class UserServiceImpl implements IUserService{
         }
         return ServerResponse.creatByErrorMessage("更新个人信息失败");
     }
+
+    public ServerResponse<User> getInformation(Integer userId){
+        User user = userMapper.selectByPrimaryKey(userId);
+        if (user == null){
+            return ServerResponse.creatByErrorMessage("找不到当前用户");
+        }
+        user.setPassword(StringUtils.EMPTY );
+        return  ServerResponse.creatBySuccess(user);
+    }
+
 }
