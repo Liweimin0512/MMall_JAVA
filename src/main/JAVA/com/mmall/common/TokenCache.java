@@ -14,6 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class TokenCache {
     private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
 
+    public static final String TOKEN_PREFIX = "token_";
+
     //LRU算法
     private static LoadingCache<String,String> localCache = CacheBuilder.newBuilder().
             initialCapacity(1000).maximumSize(10000).expireAfterAccess(12, TimeUnit.HOURS)
