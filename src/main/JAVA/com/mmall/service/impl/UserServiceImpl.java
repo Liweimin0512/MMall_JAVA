@@ -86,11 +86,11 @@ public class UserServiceImpl implements IUserService{
     public ServerResponse selectQuestion(String username){
         ServerResponse validResponse = this.checkValid(username,Const.USERNAME);
         if (validResponse.isSuccess()){
-            return ServerResponse.creatByError().creatByErrorMessage("用户不存在");
+            return ServerResponse.creatByErrorMessage("用户不存在");
         }
         String question = userMapper.selectQuestionByUsername(username);
         if (StringUtils.isNoneBlank(question)){
-            return ServerResponse.creatByError().creatBySuccess(question);
+            return ServerResponse.creatBySuccess(question);
         }
         return ServerResponse.creatByErrorMessage("找回密码的问题是空的");
     }
@@ -176,6 +176,14 @@ public class UserServiceImpl implements IUserService{
         }
         user.setPassword(StringUtils.EMPTY );
         return  ServerResponse.creatBySuccess(user);
+    }
+
+    //backend
+    public ServerResponse checkAdminRole(User user){
+        if (user!=null && user.getRole().intValue()==Const.Role.ROLE_ADMIN){
+            return ServerResponse.creatBySuccess();
+        }
+        return ServerResponse.creatByError();
     }
 
 }
