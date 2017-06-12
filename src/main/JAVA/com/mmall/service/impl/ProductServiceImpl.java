@@ -1,5 +1,8 @@
 package com.mmall.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.google.common.collect.Lists;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.dao.CartMapper;
@@ -11,10 +14,13 @@ import com.mmall.service.IProductService;
 import com.mmall.util.DateTimeUtil;
 import com.mmall.util.PropertiesUtil;
 import com.mmall.vo.ProductDetailVo;
+import com.mmall.vo.ProductListVo;
 import org.apache.commons.lang3.StringUtils;
 import org.omg.CORBA.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by 24102 on 2017/6/12.
@@ -81,11 +87,10 @@ public class ProductServiceImpl implements IProductService {
             return ServerResponse.creatByErrorMessage("产品已下架或者删除，总之找不到了");
         }
         //VO对象——value Object
-        ProductDetailVo productDetailVo = assembbleProductDetailVo(product);
+        ProductDetailVo productDetailVo = assembleProductDetailVo(product);
         return ServerResponse.creatBySuccess(productDetailVo);
     }
-
-    private ProductDetailVo assembbleProductDetailVo(Product product){
+    private ProductDetailVo assembleProductDetailVo(Product product){
         ProductDetailVo productDetailVo = new ProductDetailVo();
         productDetailVo.setId(product.getId());
         product.setStatus(product.getStatus());
@@ -113,9 +118,50 @@ public class ProductServiceImpl implements IProductService {
         return productDetailVo;
     }
 
+    public ServerResponse<PageInfo> getProductList(int pageNum, int pageSize){
+        //startPage--start
+        //填充sql查询逻辑
+        //pageHelper-收尾
+        PageHelper.startPage(pageNum,pageSize);
+        List<Product> productList = productMapper.selectList();
 
+        List<ProductListVo> productListVoList = Lists.newArrayList();
+        for (Product productItem:productList){
+            ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
+        }
+        PageInfo pageResult = new PageInfo(productList);
+        pageResult.setList(productListVoList);
+        return ServerResponse.creatBySuccess(pageResult);
+    }
+    private ProductListVo assembleProductListVo(Product product){
+        ProductListVo productListVo = new ProductListVo();
+        productListVo.setId(product.getId());
+        productListVo.setName(product.getName());
+        productListVo.setCategoryId(product.getCategoryId());
+        productListVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix","http://img.happymmall.com/"));
+        productListVo.setMainImage(product.getMainImage());
+        productListVo.setPrice(product.getPrice());
+        productListVo.setSubtitle(product.getSubtitle());
+        productListVo.setStatus(product.getStatus());
+        return productListVo;
+    }
 
-
+    public ServerResponse<PageInfo> searchProduct(String productName,Integer productId,int pageNum, int pageSize){
+        PageHelper.startPage(pageNum,pageSize);
+        if (StringUtils.isNotBlank(productName)){
+            productName = new StringBuilder().append("%").append(productName).append("%").toString();
+        }
+        List<Product> productList = productMapper.selectByNameAndProductId(productName,productId);
+        List<ProductListVo> productListVoList = Lists.newArrayList();
+        for (Product productItem:productList){
+            ProductListVo productListVo = assembleProductListVo(productItem);
+            productListVoList.add(productListVo);
+        }
+        PageInfo pageResult = new PageInfo(productList);
+        pageResult.setList(productListVoList);
+        return ServerResponse.creatBySuccess(pageResult);
+    }
 
 
 
