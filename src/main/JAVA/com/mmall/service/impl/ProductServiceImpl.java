@@ -177,7 +177,7 @@ public class ProductServiceImpl implements IProductService {
         if(product == null){
             return ServerResponse.createByErrorMessage("产品已下架或者删除");
         }
-        if(product.getStatus() != Const.ProductStatusEnum.On_SALE.getCode()){
+        if(product.getStatus() != Const.ProductStatusEnum.ON_SALE.getCode()){
             return ServerResponse.createByErrorMessage("产品已下架或者删除");
         }
         ProductDetailVo productDetailVo = assembleProductDetailVo(product);
