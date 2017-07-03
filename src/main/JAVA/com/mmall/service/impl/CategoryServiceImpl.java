@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by 24102 on 2017/6/11.
+ * createed by 24102 on 2017/6/11.
  */
 @Service("ICategoryService")
 public class CategoryServiceImpl implements ICategoryService {
@@ -28,7 +28,7 @@ public class CategoryServiceImpl implements ICategoryService {
 
     public ServerResponse addCategory(String categoryName,Integer parentId){
         if (parentId==null || StringUtils.isBlank(categoryName)){
-            return ServerResponse.creatByErrorMessage("添加品类参数错误");
+            return ServerResponse.createByErrorMessage("添加品类参数错误");
         }
 
         Category category = new Category();
@@ -38,14 +38,14 @@ public class CategoryServiceImpl implements ICategoryService {
 
         int rowCount = categoryMapper.insert(category);
         if (rowCount>0){
-            return ServerResponse.creatBySuccessMessage("添加品类成功");
+            return ServerResponse.createBySuccessMessage("添加品类成功");
         }
-        return ServerResponse.creatByErrorMessage("添加品类失败");
+        return ServerResponse.createByErrorMessage("添加品类失败");
     }
 
     public ServerResponse updateCategoryName(Integer categoryId,String categoryName){
         if (categoryId == null || StringUtils.isBlank(categoryName)){
-            return ServerResponse.creatByErrorMessage("更新品类参数错误");
+            return ServerResponse.createByErrorMessage("更新品类参数错误");
         }
         Category category = new Category();
         category.setId(categoryId);
@@ -53,9 +53,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
         int rowCount = categoryMapper.updateByPrimaryKeySelective(category);
         if (rowCount>0){
-            return ServerResponse.creatBySuccessMessage("更新品类成功");
+            return ServerResponse.createBySuccessMessage("更新品类成功");
         }
-        return ServerResponse.creatByErrorMessage("更新品类失败");
+        return ServerResponse.createByErrorMessage("更新品类失败");
     }
 
     public ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId){
@@ -63,7 +63,7 @@ public class CategoryServiceImpl implements ICategoryService {
         if (CollectionUtils.isEmpty(categoryList)){
             logger.info("未找到当前分类的子分类");
         }
-        return ServerResponse.creatBySuccess(categoryList);
+        return ServerResponse.createBySuccess(categoryList);
     }
 
     /**
@@ -81,7 +81,7 @@ public class CategoryServiceImpl implements ICategoryService {
                 categoryIdList.add(categoryItem.getId());
             }
         }
-        return ServerResponse.creatBySuccess(categoryIdList);
+        return ServerResponse.createBySuccess(categoryIdList);
     }
 
     //递归算法，算出子节点
