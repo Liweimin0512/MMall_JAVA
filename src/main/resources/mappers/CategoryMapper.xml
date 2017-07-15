@@ -78,7 +78,7 @@
         now(),
       </if>
       <if test="updateTime != null" >
-       now(),
+        now(),
       </if>
     </trim>
   </insert>
@@ -118,10 +118,27 @@
   </update>
 
   <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="int">
-    SELECT
+    select
     <include refid="Base_Column_List"/>
     from mmall_category
-    where parent_id = #{parent_id}
+    where parent_id = #{parentId}
   </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </mapper>

@@ -151,28 +151,31 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="checkUsername" resultType="int" parameterType="string">
+  
+  
+  <select id="checkUsername" resultType="int" parameterType="string" >
     select count(1) from mmall_user
     where username = #{username}
   </select>
 
-  <select id="checkEmail" resultType="int" parameterType="string">
+  <select id="checkEmail" resultType="int" parameterType="string" >
     select count(1) from mmall_user
     where email = #{email}
   </select>
-  
+
+
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     SELECT
---     *???//这样真的好?
-    <include refid="Base_Column_List"/>
+--     *???//这样真的好么?答案就是,这样不好.
+    <include refid="Base_Column_List" />
     from mmall_user
     where username = #{username}
     and password = #{password}
   </select>
-  
+
+
   <select id="selectQuestionByUsername" resultType="string" parameterType="string">
-    SELECT
+    select
     question
     from mmall_user
     where username = #{username}
@@ -182,7 +185,7 @@
     SELECT
     count(1)
     from mmall_user
-    where username = #{username}
+    where username=#{username}
     and question = #{question}
     and answer = #{answer}
   </select>
@@ -194,16 +197,22 @@
   </update>
 
   <select id="checkPassword" resultType="int" parameterType="map">
-  SELECT
-  count(1)
-  from mmall_user
-  where id = #{userId}
-  and password = #{password}
+    SELECT
+    count(1)
+    from mmall_user
+    where password = #{password}
+    and id = #{userId}
   </select>
+
 
   <select id="checkEmailByUserId" resultType="int" parameterType="map">
     select count(1) from mmall_user
     where email = #{email}
     and id != #{userId}
   </select>
+
+
+
+
+
 </mapper>
