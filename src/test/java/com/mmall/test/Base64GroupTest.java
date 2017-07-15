@@ -6,7 +6,7 @@ import sun.misc.BASE64Encoder;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 public class Base64GroupTest {
     // 加密

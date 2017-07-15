@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 /**
- * Created by geely on mmall.
+ * Created by weimin on mmall.
  */
 public class DaoTest extends TestBase {
 

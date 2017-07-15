@@ -5,7 +5,7 @@ import com.mmall.common.ServerResponse;
 import com.mmall.pojo.Shipping;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 public interface IShippingService {
 
