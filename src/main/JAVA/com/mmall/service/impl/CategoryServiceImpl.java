@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 @Service("iCategoryService")
 public class CategoryServiceImpl implements ICategoryService {

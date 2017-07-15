@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 @Service("iFileService")
 public class FileServiceImpl implements IFileService {

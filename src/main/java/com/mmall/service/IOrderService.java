@@ -7,7 +7,7 @@ import com.mmall.vo.OrderVo;
 import java.util.Map;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 public interface IOrderService {
     ServerResponse pay(Long orderNo, Integer userId, String path);

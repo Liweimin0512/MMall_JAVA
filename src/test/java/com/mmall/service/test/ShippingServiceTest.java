@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 public class ShippingServiceTest extends TestBase {
 

@@ -55,7 +55,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * Created by geely
+ * Created by weimin
  */
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
