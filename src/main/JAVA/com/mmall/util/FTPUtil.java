@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by 24102 on 2017/6/12.
+ * Created by geely
  */
 public class FTPUtil {
 
@@ -18,7 +18,7 @@ public class FTPUtil {
 
     private static String ftpIp = PropertiesUtil.getProperty("ftp.server.ip");
     private static String ftpUser = PropertiesUtil.getProperty("ftp.user");
-    private static String ftpPassword = PropertiesUtil.getProperty("ftp.pass");
+    private static String ftpPass = PropertiesUtil.getProperty("ftp.pass");
 
     public FTPUtil(String ip,int port,String user,String pwd){
         this.ip = ip;
@@ -27,12 +27,14 @@ public class FTPUtil {
         this.pwd = pwd;
     }
     public static boolean uploadFile(List<File> fileList) throws IOException {
-        FTPUtil ftpUtil = new FTPUtil(ftpIp,21,ftpUser,ftpPassword);
+        FTPUtil ftpUtil = new FTPUtil(ftpIp,21,ftpUser,ftpPass);
         logger.info("开始连接ftp服务器");
         boolean result = ftpUtil.uploadFile("img",fileList);
         logger.info("开始连接ftp服务器,结束上传,上传结果:{}");
         return result;
     }
+
+
     private boolean uploadFile(String remotePath,List<File> fileList) throws IOException {
         boolean uploaded = true;
         FileInputStream fis = null;
@@ -61,6 +63,8 @@ public class FTPUtil {
         return uploaded;
     }
 
+
+
     private boolean connectServer(String ip,int port,String user,String pwd){
 
         boolean isSuccess = false;
@@ -73,6 +77,16 @@ public class FTPUtil {
         }
         return isSuccess;
     }
+
+
+
+
+
+
+
+
+
+
 
     private String ip;
     private int port;

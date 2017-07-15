@@ -109,7 +109,7 @@
         platform_status = #{platformStatus,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        create_time = now(),
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
         update_time = now(),

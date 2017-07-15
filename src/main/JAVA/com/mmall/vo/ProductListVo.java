@@ -3,7 +3,7 @@ package com.mmall.vo;
 import java.math.BigDecimal;
 
 /**
- * Created by 24102 on 2017/6/12.
+ * Created by geely
  */
 public class ProductListVo {
 
@@ -11,7 +11,6 @@ public class ProductListVo {
     private Integer categoryId;
 
     private String name;
-
     private String subtitle;
     private String mainImage;
     private BigDecimal price;
@@ -83,5 +82,4 @@ public class ProductListVo {
     public void setImageHost(String imageHost) {
         this.imageHost = imageHost;
     }
-
 }

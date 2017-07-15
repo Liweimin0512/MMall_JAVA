@@ -5,8 +5,12 @@ import org.junit.Test;
 import java.math.BigDecimal;
 
 /**
- * Created by 24102 on 2017/6/16.
+ * Created by geely
  */
+
+
+
+
 public class BigDecimalTest {
 
     @Test
@@ -16,6 +20,12 @@ public class BigDecimalTest {
         System.out.println(4.015*100);
         System.out.println(123.3/100);
     }
+
+
+
+
+
+
 
     @Test
     public void test2(){

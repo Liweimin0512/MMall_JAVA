@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by weimin
+ * Created by geely
  */
 @Service("iCartService")
 public class CartServiceImpl implements ICartService {
@@ -40,6 +40,7 @@ public class CartServiceImpl implements ICartService {
 
         Cart cart = cartMapper.selectCartByUserIdProductId(userId,productId);
         if(cart == null){
+            //这个产品不在这个购物车里,需要新增一个这个产品的记录
             Cart cartItem = new Cart();
             cartItem.setQuantity(count);
             cartItem.setChecked(Const.Cart.CHECKED);
@@ -47,6 +48,8 @@ public class CartServiceImpl implements ICartService {
             cartItem.setUserId(userId);
             cartMapper.insert(cartItem);
         }else{
+            //这个产品已经在购物车里了.
+            //如果产品已存在,数量相加
             count = cart.getQuantity() + count;
             cart.setQuantity(count);
             cartMapper.updateByPrimaryKeySelective(cart);
@@ -94,6 +97,20 @@ public class CartServiceImpl implements ICartService {
         }
         return ServerResponse.createBySuccess(cartMapper.selectCartProductCount(userId));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private CartVo getCartVoLimit(Integer userId){
         CartVo cartVo = new CartVo();

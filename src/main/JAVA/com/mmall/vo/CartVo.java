@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by weimin
+ * Created by geely
  */
 public class CartVo {
 
