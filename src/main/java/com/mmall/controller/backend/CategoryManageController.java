@@ -11,13 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
 /**
  * Created by weimin
  */
-@Controller
+@RestController
 @RequestMapping("/manage/category")
 public class CategoryManageController {
 
@@ -29,7 +30,6 @@ public class CategoryManageController {
     private ICategoryService iCategoryService;
 
     @RequestMapping("add_category.do")
-    @ResponseBody
     public ServerResponse addCategory(HttpSession session,String categoryName,@RequestParam(value = "parentId",defaultValue = "0") int parentId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
@@ -47,7 +47,6 @@ public class CategoryManageController {
     }
 
     @RequestMapping("set_category_name.do")
-    @ResponseBody
     public ServerResponse setCategoryName(HttpSession session,Integer categoryId,String categoryName){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
@@ -62,7 +61,6 @@ public class CategoryManageController {
     }
 
     @RequestMapping("get_category.do")
-    @ResponseBody
     public ServerResponse getChildrenParallelCategory(HttpSession session,@RequestParam(value = "categoryId" ,defaultValue = "0") Integer categoryId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
@@ -77,7 +75,6 @@ public class CategoryManageController {
     }
 
     @RequestMapping("get_deep_category.do")
-    @ResponseBody
     public ServerResponse getCategoryAndDeepChildrenCategory(HttpSession session,@RequestParam(value = "categoryId" ,defaultValue = "0") Integer categoryId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);
         if(user == null){
