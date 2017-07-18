@@ -23,7 +23,7 @@ dev是开发分支，release是发布分支，master分支是主要分支（最�
 ## 文档在哪里？
 目前文档正在编写中，此时你可以参考我的博客。
 ## 项目什么样？
-[网站截图](https://github.com/Liweimin0512/MMall_JAVA/blob/master/doc/myweb-1.gif)
+![网站截图](https://github.com/Liweimin0512/MMall_JAVA/blob/master/doc/myweb-1.gif)
 当然，你也可以访问我部署在阿里云上的网站，[这里是链接](http://imitationtmall.xin/)
 ## 如何部署上线
   如果你想发布在自己的linux操作系统中，可以运行我编写的自动化发布脚本，根目录下的`deploy.sh`。在此之前，你需要完成如下的步骤：
