@@ -1,5 +1,7 @@
 # mmall-fe
 ## 此项目持续施工中...
+[![GOLD](https://img.shields.io/aur/license/yaourt.svg)]()
+[![Maven的中央](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)]()
 ## 项目简介
 本项目的最初动机，是为了贯彻落实我一直以来的“以实例驱动学习”的战略方针。开发这个项目的最初构想，有以下几点学习目标：
 + 首先，当然是java web开发，包括javaEE的核心技术的实际应用；
