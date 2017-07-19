@@ -4,9 +4,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by weimin
+ * Created by weimin on 17-7-18.
  */
 public class OrderProductVo {
+
     private List<OrderItemVo> orderItemVoList;
     private BigDecimal productTotalPrice;
     private String imageHost;

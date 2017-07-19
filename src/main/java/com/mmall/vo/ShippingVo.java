@@ -1,7 +1,7 @@
 package com.mmall.vo;
 
 /**
- * Created by weimin
+ * Created by weimin on 17-7-18.
  */
 public class ShippingVo {
     private String receiverName;
