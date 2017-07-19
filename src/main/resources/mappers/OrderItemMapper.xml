@@ -180,8 +180,6 @@
     where order_no = #{orderNo}
   </select>
 
-
-
   <insert id="batchInsert" parameterType="list">
     insert into mmall_order_item (id, order_no,user_id, product_id,
       product_name, product_image, current_unit_price,
