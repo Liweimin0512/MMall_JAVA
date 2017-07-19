@@ -30,17 +30,17 @@ public class OrderController {
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
-    private IOrderService iOrederService;
+    private IOrderService iOrderService;
 
 
     @RequestMapping("create.do")
-    public ServerResponse<Boolean> create(HttpSession session, Integer shippingId) {
+    public ServerResponse create(HttpSession session, Integer shippingId) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
 
-        return iOrederService.createOrder(user.getId(), shippingId);
+        return iOrderService.createOrder(user.getId(), shippingId);
     }
 
     @RequestMapping("cancel.do")
@@ -50,17 +50,17 @@ public class OrderController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
 
-        return iOrederService.cancel(user.getId(), orderNo);
+        return iOrderService.cancel(user.getId(), orderNo);
     }
 
     @RequestMapping("get_order_cart_product.do")
-    public ServerResponse getOrderCart(HttpSession session) {
+    public ServerResponse getOrderCartProduct(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
 
-        return iOrederService.getOrderCartProduct(user.getId());
+        return iOrderService.getOrderCartProduct(user.getId());
     }
 
     @RequestMapping("detail.do")
@@ -70,7 +70,7 @@ public class OrderController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
 
-        return iOrederService.getOrderDetail(user.getId(), orderNo);
+        return iOrderService.getOrderDetail(user.getId(), orderNo);
     }
 
     @RequestMapping("list.do")
@@ -81,7 +81,7 @@ public class OrderController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
 
-        return iOrederService.getOrderList(user.getId(), pageNum, pageSize);
+        return iOrderService.getOrderList(user.getId(), pageNum, pageSize);
     }
 
 
@@ -92,22 +92,22 @@ public class OrderController {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
         String path = request.getSession().getServletContext().getRealPath("upload");
-        return iOrederService.pay(orderNo, user.getId(), path);
+        return iOrderService.pay(orderNo, user.getId(), path);
     }
 
     @RequestMapping("alipay_callback.do")
     public Object alipayCallback(HttpServletRequest request) {
         Map<String, String> params = Maps.newHashMap();
 
-        Map requestParms = request.getParameterMap();
-        for (Iterator iter = requestParms.keySet().iterator(); iter.hasNext(); ) {
+        Map requestParams = request.getParameterMap();
+        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
             String name = (String) iter.next();
-            String[] values = (String[]) requestParms.get(name);
-            String valuStr = "";
+            String[] values = (String[]) requestParams.get(name);
+            String valueStr = "";
             for (int i = 0; i < values.length; i++) {
-                valuStr = (i == values.length - 1) ? valuStr + values[i] : valuStr + values[i] + ",";
+                valueStr = (i == values.length - 1) ? valueStr + values[i] : valueStr + values[i] + ",";
             }
-            params.put(name, valuStr);
+            params.put(name, valueStr);
         }
         logger.info("支付宝回调,sign:{},trade_status:{},参数:{}", params.get("sign"), params.get("trade_status"), params.toString());
 
@@ -126,7 +126,7 @@ public class OrderController {
 
         //todo 验证各种数据
 
-        ServerResponse serverResponse = iOrederService.aliCallback(params);
+        ServerResponse serverResponse = iOrderService.aliCallback(params);
         if (serverResponse.isSuccess()) {
             return Const.AlipayCallback.RESPONSE_SUCCESS;
         }
@@ -139,7 +139,7 @@ public class OrderController {
         if (user == null) {
             return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(), ResponseCode.NEED_LOGIN.getDesc());
         }
-        ServerResponse serverResponse = iOrederService.queryOrderPayStatus(user.getId(), orderNo);
+        ServerResponse serverResponse = iOrderService.queryOrderPayStatus(user.getId(), orderNo);
         if (serverResponse.isSuccess()) {
             return ServerResponse.createBySuccess(true);
         }
