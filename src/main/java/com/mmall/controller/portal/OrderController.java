@@ -53,7 +53,7 @@ public class OrderController {
         return iOrederService.cancel(user.getId(), orderNo);
     }
 
-    @RequestMapping("get_order_cart.do")
+    @RequestMapping("get_order_cart_product.do")
     public ServerResponse getOrderCart(HttpSession session) {
         User user = (User) session.getAttribute(Const.CURRENT_USER);
         if (user == null) {

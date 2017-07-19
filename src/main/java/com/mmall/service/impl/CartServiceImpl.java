@@ -84,8 +84,6 @@ public class CartServiceImpl implements ICartService {
         return ServerResponse.createBySuccess(cartVo);
     }
 
-
-
     public ServerResponse<CartVo> selectOrUnSelect (Integer userId,Integer productId,Integer checked){
         cartMapper.checkedOrUncheckedProduct(userId,productId,checked);
         return this.list(userId);
@@ -97,20 +95,6 @@ public class CartServiceImpl implements ICartService {
         }
         return ServerResponse.createBySuccess(cartMapper.selectCartProductCount(userId));
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private CartVo getCartVoLimit(Integer userId){
         CartVo cartVo = new CartVo();
@@ -153,13 +137,15 @@ public class CartServiceImpl implements ICartService {
                     //计算总价
                     cartProductVo.setProductTotalPrice(BigDecimalUtil.mul(product.getPrice().doubleValue(),cartProductVo.getQuantity()));
                     cartProductVo.setProductChecked(cartItem.getChecked());
+
+                    //如果不判断是否有商品就进行添加购物车操作，会报空指针异常。
+                    if(cartItem.getChecked() == Const.Cart.CHECKED){
+                        //如果已经勾选,增加到整个的购物车总价中
+                        cartTotalPrice = BigDecimalUtil.add(cartTotalPrice.doubleValue(),cartProductVo.getProductTotalPrice().doubleValue());
+                    }
+                    cartProductVoList.add(cartProductVo);
                 }
 
-                if(cartItem.getChecked() == Const.Cart.CHECKED){
-                    //如果已经勾选,增加到整个的购物车总价中
-                    cartTotalPrice = BigDecimalUtil.add(cartTotalPrice.doubleValue(),cartProductVo.getProductTotalPrice().doubleValue());
-                }
-                cartProductVoList.add(cartProductVo);
             }
         }
         cartVo.setCartTotalPrice(cartTotalPrice);
