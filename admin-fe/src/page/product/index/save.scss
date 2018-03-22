@@ -1,0 +1,50 @@
+/*
+* @Author: Rosen
+* @Date:   2017-02-18 18:57:04
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-02-28 16:31:38
+*/
+
+$sub-img-size: 80px;
+.cate-select{
+    width: 188px;
+    float: left;
+    margin-right: 10px;
+}
+.img-con{
+    margin-bottom: 10px;
+    .sub-img{
+        width: $sub-img-size;
+        height: $sub-img-size;
+        float: left;
+        margin-right: 10px;
+        position: relative;
+        border:1px solid #ccc;
+        .img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .fa{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            cursor: pointer;
+            text-align: center;
+            width: $sub-img-size;
+            height: $sub-img-size;
+            line-height: $sub-img-size;
+            background: rgba(0,0,0,.2);
+            font-size: 50px;
+            font-weight: normal;
+            color: #aaa;
+        }
+        &:hover{
+            .fa{
+                display: block;
+            }
+        }
+    }
+}
+    
