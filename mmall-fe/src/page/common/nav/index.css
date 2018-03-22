@@ -1,0 +1,54 @@
+/*
+* @Author: WillGiab
+* @Date:   2017-06-13 23:26:09
+* @Last Modified by:   WillGiab
+* @Last Modified time: 2017-07-16 22:57:47
+*/
+
+.nav{
+    background: #eee;
+    height: 30px;
+    line-height: 30px;
+}
+/* 用户部分 */
+.nav .user{
+    float: left;
+}
+.nav .user.login{
+   display: none;
+}
+.nav .user .link{
+    margin-right: 5px;
+}
+
+/* 导航链接部分 */
+.nav .nav-list{
+    float: right;
+}
+.nav .nav-list .nav-item{
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* notice */
+.notice-con{
+    background: #c60023;
+    padding: 5px 0;
+    line-height: 30px;
+}
+.notice-con .notice {
+    font-size: 14px;
+    color: #eee;
+    font-weight: 700;
+    text-align: center;
+}
+.notice-con .notice .mail-link {
+    color: #eee;
+    text-decoration: none;
+}
+.notice-con .notice .notice-link {
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+    background: #fb5505;
+}

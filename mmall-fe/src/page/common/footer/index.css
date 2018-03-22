@@ -1,0 +1,22 @@
+/*
+* @Author: WillGiab
+* @Date:   2017-06-14 11:57:41
+* @Last Modified by:   WillGiab
+* @Last Modified time: 2017-06-14 12:02:16
+*/
+.footer{
+    padding-bottom: 10px;
+}
+.footer .link{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}
+.footer .link .link{
+    padding: 0 10px;
+}
+.footer .copyright{
+    text-align: center;
+    color: #666;
+    line-height: 30px;
+}

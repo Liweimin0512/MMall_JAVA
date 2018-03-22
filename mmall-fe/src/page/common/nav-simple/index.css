@@ -1,0 +1,18 @@
+/*
+* @Author: WillGiab
+* @Date:   2017-06-13 22:36:34
+* @Last Modified by:   WillGiab
+* @Last Modified time: 2017-06-13 23:04:34
+*/
+.nav-simple{
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+.nav-simple .logo{
+    font-size: 26px;
+    font-weight: bold;
+    color: #c60023;
+    text-decoration: none;
+}

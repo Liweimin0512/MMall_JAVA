@@ -1,0 +1,47 @@
+/*
+* @Author: WillGiab
+* @Date:   2017-06-13 23:26:09
+* @Last Modified by:   WillGiab
+* @Last Modified time: 2017-06-13 23:39:56
+*/
+
+/*通用头部导航*/
+.header .logo{
+    position: absolute;
+    left: 50px;
+    top:34px;
+    display: block;
+    font-size:36px;
+    color: #c60023;
+    font-weight: bold;
+    text-decoration: none;
+}
+.header .search-con{
+     padding:40px 0 30px 250px;
+
+}
+.header .search-con .search-input{
+    width:550px;
+    height: 40px;
+    line-height: 40px;
+    padding-left:10px;
+    font-size: 15px;
+    border:2px solid #c60023;
+    outline:none;
+}
+.header .search-con .search-btn{
+    position: absolute; /*生成觉对定位的元素，脱离了文本流*/
+    height:44px;
+    width: 80px;
+}
+
+/*面包削导航*/
+.crumb{
+    margin-bottom: 15px;
+    height: 50px;
+    line-height: 50px;
+    background: #eee;
+    color: #888;
+    font-size: 14px;
+    border-top: 2px solid #c60023;
+}

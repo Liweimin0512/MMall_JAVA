@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%= require('html-loader!./layout/head-common.html') %>
+    <title><%= htmlWebpackPlugin.options.title%> - MYMall电商平台</title>
+</head>
+<body>
+<%= require('html-loader!./layout/nav-simple.html') %>
+    <div class="page-wrap w">
+        <div class="w">
+            <div class="user-con">
+                <div class="user-title">用户注册</div>
+                <div class="user-box">
+                    <div class="error-item">
+                        <i class="fa fa-minus-circle error-icon"></i>
+                        <p class="err-msg">Error</p>
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="username">
+                            <i class="fa fa-user"></i>
+                        </label>
+                        <input id="username" class="user-content"
+                               placeholder="请输入用户名" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="password">
+                            <i class="fa fa-lock"></i>
+                        </label>
+                        <input id="password" class="user-content" type="password"
+                               placeholder="请输入密码" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="password">
+                            <i class="fa fa-lock"></i>
+                        </label>
+                        <input id="password-confirm" class="user-content" type="password"
+                               placeholder="请再次输入密码" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="phone">
+                            <i class="fa fa-phone"></i>
+                        </label>
+                        <input id="phone" class="user-content"
+                               placeholder="请输入手机号" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="email">
+                            <i class="fa fa-envelope"></i>
+                        </label>
+                        <input id="email" class="user-content"
+                               placeholder="请输入邮箱地址" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="question">
+                            <i class="fa fa-question"></i>
+                        </label>
+                        <input id="question" class="user-content"
+                               placeholder="请输入密码提示问题" autocomplete="off">
+                    </div>
+                    <div class="user-item">
+                        <label class="user-label" for="answer">
+                            <i class="fa fa-key"></i>
+                        </label>
+                        <input id="answer" class="user-content"
+                               placeholder="请输入密码提示问题答案" autocomplete="off">
+                    </div>
+                    <a class="btn btn-submit" id="submit">立即注册</a>
+                    <div class="link-item">
+                        <a href="./user-login.html" class="link">已有账号，去登陆>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%= require('html-loader!./layout/footer.html') %>
+</body>
+</html>
