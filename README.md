@@ -2,6 +2,12 @@
 [![GOLD](https://img.shields.io/aur/license/yaourt.svg)]()
 [![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/AFNetworking.svg)]()
 [![Maven的中央](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)]()
+## 本项目为课程作业
+课程地址为慕课网前后端分离项目：
+前端部分：！[手把手从零打造企业级电商平台-前端实战](https://coding.imooc.com/learn/list/109.html)
+后端部分：！[Java大牛 带你从0到上线开发企业级电商项目](https://coding.imooc.com/learn/list/96.html)
+非常给力的实战课程，这里推荐给各位同学！
+有同学提醒我，之前由于粗心忘记将课程地址贴出来，这里表示道歉。
 ## 这个项目是啥？
 整合SSM框架（Spring+SpringMVC+Mybatis），采用前后端分离的架构方式开发的仿天猫在线电商平台项目，服务器端源代码。通过完成本项目，掌握了如下技能：
 + 首先，当然是java web开发，包括javaEE的核心技术的实际应用；
