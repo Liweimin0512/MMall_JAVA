@@ -5,6 +5,7 @@
 [![Maven的中央](https://img.shields.io/maven-central/v/org.apache.maven/apache-maven.svg)]()
 
 ## 本项目为课程作业
+
 课程地址为慕课网前后端分离项目：\
 
 前端部分：！[手把手从零打造企业级电商平台-前端实战](https://coding.imooc.com/learn/list/109.html)\
@@ -50,7 +51,7 @@ dev是开发分支，release是发布分支，master分支是主要分支（最�
 当然，你也可以访问我部署在阿里云上的网站，[这里是链接](http://imitationtmall.xin/)
 ## 如何部署上线
 
-  如果你想发布在自己的linux操作系统中，可以运行我编写的自动化发布脚本，根目录下的`deploy.sh`。在此之前，你需要完成如下的步骤：
+如果你想发布在自己的linux操作系统中，可以运行我编写的自动化发布脚本，根目录下的`deploy.sh`。在此之前，你需要完成如下的步骤：
   
 * 保证JDK、maven、tomcat、mysql及nginx都已经安装并且正确配置；
 * 将此git仓库拉取到本地的目录位置是`/development/git-repository/`
